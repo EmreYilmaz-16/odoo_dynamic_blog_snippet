@@ -3,10 +3,11 @@
     <template id="dynamic_blog_posts_snippet_registry"
               inherit_id="website.snippets"
               name="Dynamic Blog Posts Snippet Registry">
-        <xpath expr="//snippets[@id='snippet_groups']/t[@snippet-group][last()]" position="after">
-            <t snippet="odoo_dynamic_blog_snippet.dynamic_blog_posts_snippet"
+        <xpath expr="//snippets[@id='snippet_content']" position="inside">
+            <t t-snippet="odoo_dynamic_blog_snippet.dynamic_blog_posts_snippet"
                string="Dynamic Blog Posts"
-               group="content"/>
+               group="content"
+               t-thumbnail="/website/static/src/img/snippets_thumbs/s_text_highlight.svg"/>
         </xpath>
     </template>
 </odoo>
