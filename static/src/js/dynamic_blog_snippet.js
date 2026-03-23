@@ -15,8 +15,11 @@ publicWidget.registry.DynamicBlogPostsSnippet = publicWidget.Widget.extend({
 
         let posts = [];
         try {
-            posts = await this.rpc("/odoo_dynamic_blog_snippet/latest_posts", {
-                limit: 6,
+            posts = await this._rpc({
+                route: "/odoo_dynamic_blog_snippet/latest_posts",
+                params: {
+                    limit: 6,
+                },
             });
         } catch (error) {
             row.innerHTML = `
