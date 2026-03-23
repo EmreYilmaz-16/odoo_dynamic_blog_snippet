@@ -1,0 +1,18 @@
+.s_dynamic_blog_posts {
+    .o_dynamic_blog_card {
+        overflow: hidden;
+        border-radius: 0.75rem;
+    }
+
+    .o_dynamic_blog_image_wrap {
+        display: block;
+        overflow: hidden;
+    }
+
+    .o_dynamic_blog_image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+    }
+}

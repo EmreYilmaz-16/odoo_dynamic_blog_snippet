@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="dynamic_blog_posts_snippet" name="Dynamic Blog Posts Snippet">
+        <section class="s_dynamic_blog_posts o_cc o_cc1 pt64 pb64" data-name="Dynamic Blog Posts">
+            <div class="container">
+                <div class="row mb-4 align-items-end">
+                    <div class="col-lg-8">
+                        <span class="text-uppercase small text-muted">Blog</span>
+                        <h2 class="mt-2 mb-2">Son Blog Yazıları</h2>
+                        <p class="text-muted mb-0">Bu alan yayınlanmış blog yazılarını dinamik olarak getirir.</p>
+                    </div>
+                </div>
+
+                <div class="row js_dynamic_blog_posts_row">
+                    <div class="col-12">
+                        <div class="alert alert-info mb-0">
+                            Blog yazıları yükleniyor...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+</odoo>
