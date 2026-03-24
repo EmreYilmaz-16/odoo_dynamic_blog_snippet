@@ -1,5 +1,9 @@
+import logging
+
 from odoo import http
 from odoo.http import request
+
+_logger = logging.getLogger(__name__)
 
 
 class DynamicBlogSnippetController(http.Controller):
@@ -13,10 +17,16 @@ class DynamicBlogSnippetController(http.Controller):
     def latest_posts(self, limit=6):
         try:
             limit = int(limit)
-        except Exception:
+        except (TypeError, ValueError):
+            _logger.warning(
+                "Dynamic blog snippet: invalid limit %r received, falling back to 6.",
+                limit,
+            )
             limit = 6
 
         limit = max(1, min(limit, 24))
+
+        _logger.debug("Dynamic blog snippet: fetching latest posts with limit=%s", limit)
 
         domain = [('website_published', '=', True)]
         posts = request.env['blog.post'].sudo().search(
@@ -38,4 +48,8 @@ class DynamicBlogSnippetController(http.Controller):
                 'post_date': post.post_date.strftime('%Y-%m-%d') if post.post_date else ''
             })
 
+        _logger.info(
+            "Dynamic blog snippet: returning %s post(s) for website request.",
+            len(result),
+        )
         return result
