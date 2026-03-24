@@ -22,6 +22,7 @@ publicWidget.registry.DynamicBlogPostsSnippet = publicWidget.Widget.extend({
                 },
             });
         } catch (error) {
+            console.error("Dynamic blog snippet RPC error:", error);
             row.innerHTML = `
                 <div class="col-12">
                     <div class="alert alert-danger mb-0">
