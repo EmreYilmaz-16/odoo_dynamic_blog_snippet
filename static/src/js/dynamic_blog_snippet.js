@@ -1,6 +1,7 @@
 /** @odoo-module **/
 
 import publicWidget from "@web/legacy/js/public/public_widget";
+import { rpc } from "@web/core/network/rpc";
 
 publicWidget.registry.DynamicBlogPostsSnippet = publicWidget.Widget.extend({
     selector: ".s_dynamic_blog_posts",
@@ -15,11 +16,8 @@ publicWidget.registry.DynamicBlogPostsSnippet = publicWidget.Widget.extend({
 
         let posts = [];
         try {
-            posts = await this._rpc({
-                route: "/odoo_dynamic_blog_snippet/latest_posts",
-                params: {
-                    limit: 6,
-                },
+            posts = await rpc("/odoo_dynamic_blog_snippet/latest_posts", {
+                limit: 6,
             });
         } catch (error) {
             console.error("Dynamic blog snippet RPC error:", error);
